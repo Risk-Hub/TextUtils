@@ -1,0 +1,21 @@
+#firstDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#profileimage {
+  height: 19rem;
+  border-radius: 11rem;
+}
+
+.container .container .aboutMe {
+  width: 40rem;
+}
+
+#secondDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 3rem;
+}

@@ -18,6 +18,7 @@ export default function TextForm(props) {
     let textBox = document.getElementById("myBox")
     textBox = textBox.value;
     navigator.clipboard.writeText(textBox);
+    props.displayAlert();
   }
 
   const handleClearClick=()=>{
@@ -30,19 +31,19 @@ export default function TextForm(props) {
   }
   return (
     <>
-      <div className="mb-3 my-3">
+      <div className="container mb-3">
         <h2>{props.heading}</h2>
         <textarea className="form-control" id="myBox" onChange={handleOnChange} value={text} rows="8"></textarea>
-      </div>
-      <button className="btn btn-primary" onClick={handleUpClick}>Convert to Uppercase</button>
-      <button className="btn btn-primary mx-2" onClick={handleLoClick}>Convert to Lowercase</button>
-      <button className="btn btn-primary mx-2" onClick={handleCopy}>Copy Text</button>
-      <button className="btn btn-primary mx-2" onClick={handleClearClick}>Clear Text</button>
+      <button className="btn btn-primary my-1" onClick={handleUpClick} disabled={text.trim().length === 0 ? true : false}>Convert to Uppercase</button>
+      <button className="btn btn-primary mx-2" onClick={handleLoClick} disabled={text.trim().length === 0 ? true : false}>Convert to Lowercase</button>
+      <button className="btn btn-primary mx-2" onClick={handleCopy} disabled={text.trim().length === 0 ? true : false}>Copy Text</button>
+      <button className="btn btn-primary mx-2" onClick={handleClearClick} disabled={text.trim().length === 0 ? true : false}>Clear Text</button>
       <div className="container my-3">
         <h3>Your text summary</h3>
         <p>{text.trim().split(" ").length} words, {text.length} characters</p>
         <h3>Preview</h3>
         <p>{text.length > 0 ? text : "Type something above in the text box to show here"} </p>
+      </div>
       </div>
     </>
   );
