@@ -40,7 +40,7 @@ export default function TextForm(props) {
       <button className="btn btn-primary mx-2" onClick={handleClearClick} disabled={text.trim().length === 0 ? true : false}>Clear Text</button>
       <div className="container my-3">
         <h3>Your text summary</h3>
-        <p>{text.trim().split(" ").length} words, {text.length} characters</p>
+        <p>{text.split(/\s+/).filter((element)=>{return element.length !== 0}).length} words, {text.length} characters</p>
         <h3>Preview</h3>
         <p>{text.length > 0 ? text : "Type something above in the text box to show here"} </p>
       </div>
