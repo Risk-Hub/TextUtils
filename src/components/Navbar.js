@@ -6,7 +6,7 @@ import {Link} from "react-router-dom"
 
 export default function Navbar(props) {
   return (
-    <nav className={props.clas} style={{backgroundColor: props.styl}}>
+    <nav className={props.modes.clas} style={{backgroundColor: props.modes.styl}}>
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">{props.title}</Link>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,11 +21,11 @@ export default function Navbar(props) {
               <Link className="nav-link" to="/about">{props.aboutText}</Link>
             </li>
           </ul>
-          <img src={sunLogo} className="mx-2" style={props.image} alt="Light Mode"/>
+          <img src={sunLogo} className="mx-2" style={{filter: props.modes.image}} alt="Light Mode"/>
           <div className="form-check form-switch">
             <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckChecked" />
           </div>
-          <img src={moonLogo} style={props.image} alt="Dark Mode"/>
+          <img src={moonLogo} style={{filter: props.modes.image}} alt="Dark Mode"/>
           <form className="d-flex mx-2" role="search">
             <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" style={{ background: "white" }} disabled/>
             <button className="btn btn-outline-primary" type="submit" disabled>Search</button>

@@ -12,28 +12,34 @@ import {
 
 function App() {
 
-  const [clas,setClas] = useState("navbar navbar-expand-lg");
-  const [styl,setStyl] = useState("#E3F2FD");
-  const [bg,setBg] = useState("#cdeafc");
-  const [image,setImage] = useState();
   const [alert,setAlert] = useState("hidden");
+  const [modes,setModes] = useState({
+    clas: "navbar navbar-expand-lg",
+    styl: "#E3F2FD",
+    bg: "#cdeafc",
+    image: "",
+  });
 
   const toggleMode=()=>{
-    if(clas === "navbar navbar-expand-lg"){
-      setClas("navbar navbar-expand-lg navbar-dark bg-dark")
-      setStyl()
-      setImage({filter: "invert(1)"})
-      document.body.style.backgroundColor="black"
-      document.body.style.color="white"
-      setBg("#212529")
+    if(modes.clas === "navbar navbar-expand-lg"){
+    setModes({
+      clas: "navbar navbar-expand-lg navbar-dark bg-dark",
+      styl: "",
+      bg: "#cdeafc",
+      image: "invert(1)",
+    })
+    document.body.style.backgroundColor="black"
+    document.body.style.color="white"
     }
     else{
-      setClas("navbar navbar-expand-lg")
-      setStyl("#E3F2FD")
-      setImage({filter: "invert(0)"})
+      setModes({
+        clas: "navbar navbar-expand-lg",
+        styl: "#E3F2FD",
+        bg: "#cdeafc",
+        image: "invert(0)",
+      })
       document.body.style.backgroundColor="white"
       document.body.style.color="black"
-      setBg("#cdeafc")
     }
 
   }
@@ -48,10 +54,10 @@ function App() {
   return (
     <>
     <Router>
-      <Navbar title="TextUtils" clas={clas} styl={styl} image={image} toggleMode={toggleMode} />
+      <Navbar title="TextUtils" toggleMode={toggleMode} modes={modes}/>
         <Routes>
           <Route exact path="/" element={<><Alert alert={alert} /><TextForm heading="Enter your text below" displayAlert={displayAlert}/></>}/>
-          <Route exact path="/about" element={<About bg={bg} image={image}/>} />
+          <Route exact path="/about" element={<About modes={modes}/>} />
         </Routes>
     </Router>
     </>
